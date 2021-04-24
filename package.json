@@ -1,7 +1,7 @@
 {
   "name": "lisp-interpreter",
-  "version": "1.0.1",
-  "main": "index.js",
+  "version": "1.0.0",
+  "main": "out/index.js",
   "repository": "https://github.com/githiago-f/lisp-interpreter.git",
   "author": "githiago-f <tfarias@protonmail.com>",
   "license": "MIT",
