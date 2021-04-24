@@ -1,10 +1,7 @@
-import { readFile } from 'fs/promises';
-import { compileToExecutable } from '../utils/compiler';
-
 describe('# compileToExecutable', () => {
   it('should serialize preserving commands and strings', () => {
     const inputFileContent = '(print "My Input file")';
-    const output = compileToExecutable(inputFileContent);
+    const output = tokenize(inputFileContent);
     const actualOutput = {
       value: '(',
       next: {
@@ -31,7 +28,7 @@ describe('# compileToExecutable', () => {
     (def x 5)\
     (if x > 1 (println "X is greater than 1"))\
     ';
-    const output = compileToExecutable(inputFileContent);
+    const output = tokenize(inputFileContent);
     expect(output.value).toBe('(');
   });
 
@@ -44,15 +41,14 @@ describe('# compileToExecutable', () => {
     (if x > 1 (println "X is greater than 1"))
     ;; last line as comment will be desabled too`;
 
-    const output = compileToExecutable(inputFileContent);
+    const output = tokenize(inputFileContent);
     expect(output.value).toBe("(");
   });
 
   it('should serialize input file', async () => {
     const fileInput = await readFile('./src/__test__/inputs/comments.lsp');
-    const output = compileToExecutable(fileInput.toString());
+    const output = tokenize(fileInput.toString());
     expect(output.value).toBe('(');
     expect(output.next.value).toBe("setq");
   })
 });
-

@@ -1,9 +1,9 @@
 import { atom } from "../value-objects/atom";
 import { push } from "./push";
 
-export const compileToExecutable = (input: string) => {
+export const tokenize = (input: string) => {
   const items = input
-    .replace(/\;\;(.*?)\n/g, '')
+    .replace(/\;\;(.*?)\n|\n\r|$/g, '')
     .replace(/\n/g, '')
     .trim()
     .replace(/\(/gi, '( ')
