@@ -1,4 +1,4 @@
-import { atom } from "../value-objects/atom";
+import { atom } from "./atom";
 import { push } from "./push";
 
 export const tokenize = (input: string) => {

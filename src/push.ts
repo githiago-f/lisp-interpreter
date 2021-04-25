@@ -1,4 +1,4 @@
-import { Atom } from "../value-objects/atom";
+import { Atom } from "./atom";
 
 export const push = (head: Atom, value: Atom) => {
   if(head.next === null){
