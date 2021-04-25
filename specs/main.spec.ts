@@ -1,26 +1,28 @@
-import { tokenize } from '../src/utils/tokenize';
+import { tokenize } from '../src/tokenize';
 import { expect } from 'chai';
 import { join } from 'path';
 import { readFileSync } from 'fs';
+import { hasValue } from './../src/find';
 
 describe('#tokenize', () => {
-  describe('Valid input', () => {
+  context('Valid input', () => {
+    const filePath = join(__dirname, './inputs/comments.lsp');
+    const comments = readFileSync(filePath).toString();
+
     context('contains string literal', () => {
-      const validInput = '(print "Hello world!")';
-      const tokenized = tokenize(validInput);
-      it('Doesn\'t break strings', () => {
+      const tokenized = tokenize(comments);
+      it('Does not break strings', () => {
+        const hasString = hasValue(tokenized, "\"Hello, World!\"");
         expect(tokenized.next).not.be.equal(null);
-        expect(tokenized.next.next.value).to.be.equal('"Hello world!"');
+        expect(hasString).to.be.true;
       });
     });
+
     context('has comments (;;)', () => {
-      const filePath = join(__dirname, './inputs/comments.lsp');
-      const validInput = readFileSync(filePath);
-      const tokenized = tokenize(validInput.toString());
-      it('Ignores commented lines', () => {
-        expect(tokenized.next).not.to.be.equal(null);
+      const tokenized = tokenize(comments);
+      it('ignores commented lines', () => {
         expect(tokenized.value).to.be.equal('(');
       });
     });
-  })
+  });
 });
