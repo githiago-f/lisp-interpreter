@@ -1,7 +1,7 @@
 import { tokenize } from '../src/tokenize';
 import { expect } from 'chai';
 import { join } from 'path';
-import { readFileSync } from 'node:fs';
+import { readFileSync } from 'fs';
 
 describe('#tokenize', () => {
   context('Valid input', () => {
