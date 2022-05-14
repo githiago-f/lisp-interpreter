@@ -16,5 +16,8 @@
   },
   "scripts": {
     "test": "mocha -r ts-node/register 'specs/**/*.ts'"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }

@@ -3,7 +3,10 @@
     "allowJs": false,
     "allowSyntheticDefaultImports": true,
     "outDir": "out",
-    "target": "ES2020",
+    "target": "esnext",
+    "lib": [
+      "ESNext.Array"
+    ],
     "module": "CommonJS",
     "esModuleInterop": true
   },

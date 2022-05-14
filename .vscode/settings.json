@@ -1,4 +1,7 @@
 {
     "mochaExplorer.files": "specs/**/*.ts",
-    "mochaExplorer.require": "ts-node/register"
+    "mochaExplorer.require": "ts-node/register",
+    "editor.rulers": [
+        80
+    ]
 }
